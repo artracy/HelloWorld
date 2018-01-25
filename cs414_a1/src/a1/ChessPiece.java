@@ -24,31 +24,46 @@ public abstract class ChessPiece {
 	public String getPosition() {
 		String position = "";
 		position += (char) ('a'+ column);
-		position += (char) ('0'+ row);
+		position += (char) ('1'+ row);
 		
 		return position;
 		
 	}
 	
-	//This method sets the position of the piece to the appropriate row and column based on the argument, 
-	//which in the format single letter (a..h) followed by a single digit (1..8). 
+	/*This method sets the position of the piece to the appropriate row and column based on the argument, 
+	 *which in the format single letter (a..h) followed by a single digit (1..8). 
 	
-	//If the position is illegal because the string contains illegal characters or represents a position 
-	//outside the board, the exception is thrown.
-	
+	 *If the position is illegal because the string contains illegal characters or represents a position 
+	 *outside the board, the exception is thrown.
+	 */
 	public void setPosition(String position) throws IllegalPositionException{
-		int newRow, newcolumn;
+		int newRow, newColumn;
+		ArrayList<String> moves;
 		
 		if(position.length() != 2)
 			throw new IllegalPositionException("Invalid string size");
 		
-		//if(1);
+		newRow = position.charAt(0) - 'a';
+		newColumn = position.charAt(1) - '1';
 		
+		if( (newRow < 0) || (7 < newRow) )
+			throw new IllegalPositionException("Invalid row");
+		
+		if( (newColumn < 0) || (7 < newColumn) )
+			throw new IllegalPositionException("Invalid column");
+		
+		moves = this.legalMoves();
+		
+		if(moves.contains(position)) {
+			row = newRow;
+			column = newColumn;
+		}
+			
+
 	}
 	
 	abstract public String toString();
 	
-	abstract public ArrayList<String> legalMoves();
-	
+	abstract public ArrayList<String> legalMoves();	
 
 }

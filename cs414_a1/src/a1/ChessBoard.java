@@ -14,19 +14,46 @@ public class ChessBoard {
 	
 	private ChessPiece[][] board;
 	
+	ChessBoard() {
+		
+	}
+	
+	/*This method initializes the board to the standard chess opening state with indexing as shown in the 
+	 * figure. This method should use the constructors of the appropriate pieces, and call placePiece 
+	 * below to place the newly constructed pieces in the right position.
+	 */	
 	public void initialize() {
 		
 		
 	}
 	
+	
+	/*This method returns the chess piece at a given position. The position is represented as a two-character
+	 *  string (e.g., e8) as described above. The first letter is in lowercase (a..h) and the second letter 
+	 *  is a digit (1..8). If the position is illegal because the string contains illegal characters or 
+	 *  represents a position outside the board, the exception is thrown.
+	 */	
 	public ChessPiece getPeice(String position) throws IllegalPositionException {
 		return null;
 	}
 	
+	
+	
+	/*This method tries to place the given piece at a given position, and returns true if successful, 
+	 * and false if there is already a piece of the same player in the given position or the position was 
+	 * illegal for any of the two reasons mentioned in the description of getPiece. If an opponent's piece 
+	 * exists, that piece is captured. If successful, this method should call an appropriate method in the 
+	 * ChessPiece class (i.e., setPosition) to set the piece's position.
+	 */	
 	public boolean placePiece(ChessPiece piece, String position) {
 		return false;
 	}
 	
+	
+	/* This method checks if moving the piece from the fromPosition to toPosition is a legal move. 
+	 * Legality is defined based on the rules described above in Section 2.1. If the move is legal, 
+	 * it executes the move, changing the value of the board as needed. Otherwise, the stated exception is thrown.
+	 */
 	public void move(String fromPosition, String toPosition) throws IllegalMoveException{
 		
 	}

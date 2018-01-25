@@ -2,6 +2,16 @@ package a1;
 
 public class ChessBoard {
 	
+	/*public static void main(String[] args) {
+		ChessBoard board = new ChessBoard();
+		Queen queen = new Queen(board, ChessPiece.Color.BLACK);
+		try{
+			queen.setPosition("a1");
+		}catch (IllegalPositionException e) {
+			System.out.println(e.getMessage());
+		}		
+	}*/
+	
 	private ChessPiece[][] board;
 	
 	public void initialize() {

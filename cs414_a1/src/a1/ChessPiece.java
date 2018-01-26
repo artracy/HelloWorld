@@ -52,13 +52,13 @@ public abstract class ChessPiece {
 		if( (newColumn < 0) || (7 < newColumn) )
 			throw new IllegalPositionException("Invalid column");
 		
-		moves = this.legalMoves();
+	/*	moves = this.legalMoves();
 		
 		if(moves.contains(position)) {
 			row = newRow;
 			column = newColumn;
 		}
-			
+			*/
 
 	}
 	

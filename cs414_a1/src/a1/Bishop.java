@@ -2,6 +2,8 @@ package a1;
 
 import java.util.ArrayList;
 
+import a1.ChessPiece.Color;
+
 public class Bishop extends ChessPiece {
 
 	public Bishop(ChessBoard board, Color color) {
@@ -11,8 +13,12 @@ public class Bishop extends ChessPiece {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		if(color == Color.WHITE) {
+			return "\u2657";
+		}else if(color == Color.BLACK) {
+			return "\u265D";
+		}else
+			return null;
 	}
 
 	@Override

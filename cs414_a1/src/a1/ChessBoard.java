@@ -2,21 +2,42 @@ package a1;
 
 public class ChessBoard {
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		ChessBoard board = new ChessBoard();
 		Queen queen = new Queen(board, ChessPiece.Color.BLACK);
 		try{
 			queen.setPosition("a1");
 		}catch (IllegalPositionException e) {
 			System.out.println(e.getMessage());
-		}		
-	}*/
+		}	
+		
+		System.out.println(queen.color);
+		System.out.println(queen.toString());
+		
+		ChessPiece knight = new Knight(board, ChessPiece.Color.WHITE);
+		try{
+			knight = board.getPeice("asdf");
+		}catch (IllegalPositionException e) {
+			
+		}
+		if(knight == null) 	
+			System.out.print("asdf");
+	}
 	
+	//[Row][Coulmn]
 	private ChessPiece[][] board;
 	
+	//The no-arg constructor ChessBoard() initializes the board to an 8X8 array with all empty squares. An empty square is null.
 	ChessBoard() {
-		
+		for(int x =0; x <= 7; x++) {
+			for(int y = 0; y <= 7; y++) {
+				board[x][y] = null;
+			}
+		}
+		initialize();
 	}
+	
+	//In the initial position, the white king at e1 is at index [0][4]. The black queen at d8 is at index [7][3].
 	
 	/*This method initializes the board to the standard chess opening state with indexing as shown in the 
 	 * figure. This method should use the constructors of the appropriate pieces, and call placePiece 
@@ -24,6 +45,7 @@ public class ChessBoard {
 	 */	
 	public void initialize() {
 		
+		board[0]
 		
 	}
 	
@@ -34,7 +56,9 @@ public class ChessBoard {
 	 *  represents a position outside the board, the exception is thrown.
 	 */	
 	public ChessPiece getPeice(String position) throws IllegalPositionException {
+		
 		return null;
+		
 	}
 	
 	

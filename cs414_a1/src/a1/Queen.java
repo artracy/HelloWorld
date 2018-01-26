@@ -6,17 +6,16 @@ import java.util.ArrayList;
 public class Queen extends ChessPiece {
 
 	public Queen(ChessBoard board, Color color) {
-		super(board, color);
-		// TODO Auto-generated constructor stub
+		super(board, color);		
 	}
 
-
+	
 	@Override
 	public String toString() {
 		if(color == Color.WHITE) {
 			return "\u2655";
 		}else if(color == Color.BLACK) {
-			return "\u265B";
+			return "\u2654"; //265B
 		}else
 			return null;
 	}

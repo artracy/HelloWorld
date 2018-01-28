@@ -1,34 +1,26 @@
 package a1;
 
+import java.util.ArrayList;
+
 public class ChessBoard {
 	
 	public static void main(String[] args) {
 		ChessBoard board = new ChessBoard();
-		Queen queen = new Queen(board, ChessPiece.Color.BLACK);
-		try{
-			queen.setPosition("a1");
-		}catch (IllegalPositionException e) {
-			System.out.println(e.getMessage());
-		}	
-		
-		System.out.println(queen.color);
-		System.out.println(queen.toString());
-		
-		ChessPiece knight = new Knight(board, ChessPiece.Color.WHITE);
-		try{
-			knight = board.getPeice("asdf");
-		}catch (IllegalPositionException e) {
-			
-		}
-		if(knight == null) 	
-			System.out.print("asdf");
+		String thing = board.toString();
+		System.out.print(thing);
 	}
+	
+	
+////////////////////////////////////////////////////////////////////////////	
+	
+	
 	
 	//[Row][Coulmn]
 	private ChessPiece[][] board;
 	
 	//The no-arg constructor ChessBoard() initializes the board to an 8X8 array with all empty squares. An empty square is null.
 	ChessBoard() {
+		board = new ChessPiece[8][8];
 		for(int x =0; x <= 7; x++) {
 			for(int y = 0; y <= 7; y++) {
 				board[x][y] = null;
@@ -45,7 +37,42 @@ public class ChessBoard {
 	 */	
 	public void initialize() {
 		
-		board[0]
+		placePiece(new Rook(this, ChessPiece.Color.WHITE), "a1");
+		placePiece(new Knight(this, ChessPiece.Color.WHITE), "b1");
+		placePiece(new Bishop(this, ChessPiece.Color.WHITE), "c1");
+		placePiece(new Queen(this, ChessPiece.Color.WHITE), "d1");
+		placePiece(new King(this, ChessPiece.Color.WHITE), "e1");
+		placePiece(new Bishop(this, ChessPiece.Color.WHITE), "f1");
+		placePiece(new Knight(this, ChessPiece.Color.WHITE), "g1");
+		placePiece(new Rook(this, ChessPiece.Color.WHITE), "h1");		
+		
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "a2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "b2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "c2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "d2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "e2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "f2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "g2");
+		placePiece(new Pawn(this, ChessPiece.Color.WHITE), "h2");
+		
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "a7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "b7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "c7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "d7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "e7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "f7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "g7");
+		placePiece(new Pawn(this, ChessPiece.Color.BLACK), "h7");
+		
+		placePiece(new Rook(this, ChessPiece.Color.BLACK), "a8");
+		placePiece(new Knight(this, ChessPiece.Color.BLACK), "b8");
+		placePiece(new Bishop(this, ChessPiece.Color.BLACK), "c8");
+		placePiece(new Queen(this, ChessPiece.Color.BLACK), "d8");
+		placePiece(new King(this, ChessPiece.Color.BLACK), "e8");
+		placePiece(new Bishop(this, ChessPiece.Color.BLACK), "f8");
+		placePiece(new Knight(this, ChessPiece.Color.BLACK), "g8");
+		placePiece(new Rook(this, ChessPiece.Color.BLACK), "h8");		
+		
 		
 	}
 	
@@ -55,9 +82,15 @@ public class ChessBoard {
 	 *  is a digit (1..8). If the position is illegal because the string contains illegal characters or 
 	 *  represents a position outside the board, the exception is thrown.
 	 */	
-	public ChessPiece getPeice(String position) throws IllegalPositionException {
+	public ChessPiece getPiece(String position) throws IllegalPositionException {
+		int newRow, newColumn;
+				
+		positionCheck(position);
 		
-		return null;
+		newColumn = position.charAt(0) - 'a';
+		newRow = position.charAt(1) - '1';
+		
+		return board[newRow][newColumn];
 		
 	}
 	
@@ -70,7 +103,30 @@ public class ChessBoard {
 	 * ChessPiece class (i.e., setPosition) to set the piece's position.
 	 */	
 	public boolean placePiece(ChessPiece piece, String position) {
-		return false;
+		int newRow, newColumn;
+		
+		if(piece != null) {
+			try {
+				positionCheck(position);
+			
+				if (getPiece(position) != null)
+					if (piece.getColor() == getPiece(position).getColor()) {
+						return false;
+					}
+			
+				piece.setPosition(position);
+			
+			}catch (IllegalPositionException e) {
+				return false;
+			}		
+		}
+		
+		newColumn = position.charAt(0) - 'a';
+		newRow = position.charAt(1) - '1';
+		
+		board[newRow][newColumn] = piece;			
+		
+		return true;
 	}
 	
 	
@@ -79,6 +135,56 @@ public class ChessBoard {
 	 * it executes the move, changing the value of the board as needed. Otherwise, the stated exception is thrown.
 	 */
 	public void move(String fromPosition, String toPosition) throws IllegalMoveException{
+		ChessPiece piece;
+		int oldRow, oldColumn;
+		ArrayList<String> moves;
+		
+		try {			
+			piece = getPiece(fromPosition);
+			positionCheck(toPosition);
+			
+		}catch (IllegalPositionException e) {
+			throw new IllegalMoveException(e.getMessage());
+		}
+		
+		
+		if (piece == null)
+			throw new IllegalMoveException("No piece at start location");
+		moves = piece.legalMoves();
+		
+		
+		if (moves.contains(toPosition)) {
+			if(placePiece(piece, toPosition)) {
+				oldColumn = fromPosition.charAt(0) - 'a';
+				oldRow = fromPosition.charAt(1) - '1';
+				board[oldRow][oldColumn] = null;
+			}else {
+				throw new IllegalMoveException("Unable to make the move");
+			}
+			
+		}else {
+			throw new IllegalMoveException("Not a legal Move");
+		}
+			
+		
+		
+	}
+	
+	private void positionCheck(String position)  throws IllegalPositionException{
+		int newRow, newColumn;
+		
+		if(position.length() != 2)
+			throw new IllegalPositionException("Invalid string size");
+		
+		newColumn = position.charAt(0) - 'a';
+		newRow = position.charAt(1) - '1';
+		
+		if( (newRow < 0) || (7 < newRow) )
+			throw new IllegalPositionException("Invalid row");
+		
+		if( (newColumn < 0) || (7 < newColumn) )
+			throw new IllegalPositionException("Invalid column");		
+		
 		
 	}
 	

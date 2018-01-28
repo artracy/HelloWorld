@@ -15,7 +15,7 @@ public class Queen extends ChessPiece {
 		if(color == Color.WHITE) {
 			return "\u2655";
 		}else if(color == Color.BLACK) {
-			return "\u2654"; //265B
+			return "\u265B";
 		}else
 			return null;
 	}

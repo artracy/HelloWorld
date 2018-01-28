@@ -26,7 +26,7 @@ public class Rook extends ChessPiece {
 		int checkRow, checkColumn;
 		ArrayList<String> moves = null;
 		String position;
-		ChessPiece piece;
+		ChessPiece otherPiece;
 		
 		
 		//Test for legal moves moving up
@@ -34,12 +34,12 @@ public class Rook extends ChessPiece {
 		for (checkRow = row + 1; checkRow < 8; checkRow ++) {
 			position = posToString(checkRow, column);
 			try {
-				piece = board.getPiece(position);
-				if (piece == null) {
+				otherPiece = board.getPiece(position);
+				if (otherPiece == null) {
 					moves.add(position);
 					continue;
 				}
-				if(piece.getColor() == color) {
+				if(otherPiece.getColor() == color) {
 					break;
 				}else {
 					moves.add(position);
@@ -58,12 +58,12 @@ public class Rook extends ChessPiece {
 		for (checkRow = row - 1; checkRow >= 0; checkRow --) {
 			position = posToString(checkRow, column);
 			try {
-				piece = board.getPiece(position);
-				if (piece == null) {
+				otherPiece = board.getPiece(position);
+				if (otherPiece == null) {
 					moves.add(position);
 					continue;
 				}
-				if(piece.getColor() == color) {
+				if(otherPiece.getColor() == color) {
 					break;
 				}else {
 					moves.add(position);
@@ -80,12 +80,12 @@ public class Rook extends ChessPiece {
 		for (checkColumn = column + 1; checkColumn < 8; checkColumn ++) {
 			position = posToString(checkRow, column);
 			try {
-				piece = board.getPiece(position);
-				if (piece == null) {
+				otherPiece = board.getPiece(position);
+				if (otherPiece == null) {
 					moves.add(position);
 					continue;
 				}
-				if(piece.getColor() == color) {
+				if(otherPiece.getColor() == color) {
 					break;
 				}else {
 					moves.add(position);
@@ -102,12 +102,12 @@ public class Rook extends ChessPiece {
 		for (checkColumn = column - 1; checkColumn >= 0; checkColumn --) {
 			position = posToString(checkRow, column);
 			try {
-				piece = board.getPiece(position);
-				if (piece == null) {
+				otherPiece = board.getPiece(position);
+				if (otherPiece == null) {
 					moves.add(position);
 					continue;
 				}
-				if(piece.getColor() == color) {
+				if(otherPiece.getColor() == color) {
 					break;
 				}else {
 					moves.add(position);

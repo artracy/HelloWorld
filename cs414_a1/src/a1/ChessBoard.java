@@ -21,12 +21,12 @@ public class ChessBoard {
 	//The no-arg constructor ChessBoard() initializes the board to an 8X8 array with all empty squares. An empty square is null.
 	ChessBoard() {
 		board = new ChessPiece[8][8];
-		for(int x =0; x <= 7; x++) {
-			for(int y = 0; y <= 7; y++) {
-				board[x][y] = null;
+		for(int row =0; row < 8; row++) {
+			for(int column = 0; column < 8; column++) {
+				board[row][column] = null;
 			}
 		}
-		initialize();
+		
 	}
 	
 	//In the initial position, the white king at e1 is at index [0][4]. The black queen at d8 is at index [7][3].
@@ -71,7 +71,13 @@ public class ChessBoard {
 		placePiece(new King(this, ChessPiece.Color.BLACK), "e8");
 		placePiece(new Bishop(this, ChessPiece.Color.BLACK), "f8");
 		placePiece(new Knight(this, ChessPiece.Color.BLACK), "g8");
-		placePiece(new Rook(this, ChessPiece.Color.BLACK), "h8");		
+		placePiece(new Rook(this, ChessPiece.Color.BLACK), "h8");	
+		
+		for(int row = 2; row < 6; row++) {
+			for(int column = 0; column < 8; column++) {
+				board[row][column] = null;
+			}
+		}
 		
 		
 	}

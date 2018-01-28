@@ -23,8 +23,63 @@ public class Pawn extends ChessPiece {
 
 	@Override
 	public ArrayList<String> legalMoves() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		int checkRow, checkColumn, direction; 
+		ArrayList<String> moves = null;
+		String position;
+		ChessPiece otherPiece;
+		
+		
+		direction = (color == Color.WHITE) ? 1 : -1;
+		
+		if(row != 0 && row != 7) {
+			
+			position = posToString(row + direction, column);
+			try {
+				otherPiece = board.getPiece(position);
+				
+				if (otherPiece == null) {
+					moves.add(position);
+					
+					if (row == 1 || row == 6) {
+						position = posToString(row + (direction*2), column);
+						otherPiece = board.getPiece(position);
+						
+						if (otherPiece == null) {
+							moves.add(position);
+						}
+					}
+				}	
+				
+				if (column < 7 ) {
+					position = posToString(row + direction, column + 1);
+					otherPiece = board.getPiece(position);
+					
+					if (otherPiece != null) {
+						if(otherPiece.color != color)
+							moves.add(position);
+					}
+				}
+				
+				if (column > 0 ) {
+					position = posToString(row + direction, column - 1);
+					otherPiece = board.getPiece(position);
+					
+					if (otherPiece != null) {
+						if(otherPiece.color != color)
+							moves.add(position);
+					}
+				}				
+				
+	
+			} catch (IllegalPositionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}
+				
+		return moves;
 	}
 
 }

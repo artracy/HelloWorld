@@ -23,8 +23,42 @@ public class King extends ChessPiece {
 
 	@Override
 	public ArrayList<String> legalMoves() {
-		// TODO Auto-generated method stub
-		return null;
+
+		int checkRow, checkColumn; 
+		ArrayList<String> moves = null;
+		String position;
+		ChessPiece otherPiece;
+		
+		for (checkRow = row -1 ; checkRow <= row +1; checkRow++) {
+			for (checkColumn = column -1; checkColumn <= column +1; checkColumn++) {
+				
+				if(checkRow == row && checkColumn == column ||
+						checkRow <  0 || checkRow >= 8 ||
+						checkColumn < 0 || checkColumn >= 8) {
+					continue;
+				}
+					
+				position = posToString(checkRow, checkColumn);
+				try {
+					otherPiece = board.getPiece(position);
+					if (otherPiece == null) {
+						moves.add(position);
+						continue;
+					}
+					
+					if(otherPiece.getColor() != color) {
+						moves.add(position);
+					}			
+					
+				} catch (IllegalPositionException e) {
+					
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		return moves;
 	}
 
 }

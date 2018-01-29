@@ -11,6 +11,8 @@ public class Rook extends ChessPiece {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		if(color == Color.WHITE) {
@@ -28,7 +30,8 @@ public class Rook extends ChessPiece {
 		String position;
 		ChessPiece otherPiece;
 		
-		
+		if(board == null)
+			return null;
 		//Test for legal moves moving up
 		
 		for (checkRow = row + 1; checkRow < 8; checkRow ++) {

@@ -5,10 +5,10 @@ public abstract class ChessPiece {
 	public enum Color {WHITE, BLACK};
 	
 	
-	protected ChessBoard board; // the board it belongs to, default null
-	protected int row; // the index of the horizontal rows 0..7
-	protected int column; // the index of the vertical column 0..7
-	protected Color color; // the color of the piece
+	protected ChessBoard board = null; // the board it belongs to, default null
+	protected int row = 8; // the index of the horizontal rows 0..7
+	protected int column = 8; // the index of the vertical column 0..7
+	protected Color color = null; // the color of the piece
 	
 	public ChessPiece(ChessBoard board, Color color) {
 		this.board = board;
@@ -22,6 +22,9 @@ public abstract class ChessPiece {
 	
 	//This method returns the position of the piece in the format single letter (a..h) followed by a single digit (1..8).
 	public String getPosition() {
+		if (row == 8 || column == 8)
+			return null;
+		
 		String position = "";
 		position += (char) ('a'+ column);
 		position += (char) ('1'+ row);

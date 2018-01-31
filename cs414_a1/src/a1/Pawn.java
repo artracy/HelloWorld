@@ -32,7 +32,7 @@ public class Pawn extends ChessPiece {
 		
 		direction = (color == Color.WHITE) ? 1 : -1;
 		
-		if(row != 0 && row != 7) {
+		if( !((row == 0) && (color == Color.BLACK)) && !((row == 7) && (color == Color.WHITE))) {
 			
 			position = posToString(row + direction, column);
 			try {
@@ -41,7 +41,7 @@ public class Pawn extends ChessPiece {
 				if (otherPiece == null) {
 					moves.add(position);
 					
-					if (row == 1 || row == 6) {
+					if (((row == 1) && (color == Color.WHITE)) || ((row == 6) && (color == Color.BLACK))) {
 						position = posToString(row + (direction*2), column);
 						otherPiece = board.getPiece(position);
 						

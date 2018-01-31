@@ -1,5 +1,15 @@
 package a1;
 
+/*   
+ *   File: King.java
+ *   Name: Andrew Tracy
+ *   Data: 20180121
+ *   Course: CS 414
+ *   Assignment: A1
+ *   Desc:  Class for the King chess piece
+ * 
+ * 
+ */
 import java.util.ArrayList;
 
 import a1.ChessPiece.Color;
@@ -40,7 +50,7 @@ public class King extends ChessPiece {
 				}
 					
 				position = posToString(checkRow, checkColumn);
-				System.out.println(position);
+				
 				try {
 					otherPiece = board.getPiece(position);
 					if (otherPiece == null) {

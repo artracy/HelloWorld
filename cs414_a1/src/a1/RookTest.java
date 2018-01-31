@@ -1,5 +1,16 @@
 package a1;
 
+/*   
+ *   File: RookTest.java
+ *   Name: Andrew Tracy
+ *   Data: 20180121
+ *   Course: CS 414
+ *   Assignment: A1
+ *   Desc:  JUnit test class to test the Rook class
+ * 
+ * 
+ */
+
 import java.util.ArrayList;
 
 import static org.junit.Assert.fail;

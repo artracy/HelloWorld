@@ -1,4 +1,16 @@
 package a1;
+
+/*   
+ *   File: ChessPiece.java
+ *   Name: Andrew Tracy
+ *   Data: 20180121
+ *   Course: CS 414
+ *   Assignment: A1
+ *   Desc:  The parent class for the different type of chess pieces.  
+ * 
+ * 
+ */
+
 import java.util.*;
 
 public abstract class ChessPiece {

@@ -1,5 +1,15 @@
 package a1;
 
+/*   
+ *   File: BishopTest.java
+ *   Name: Andrew Tracy
+ *   Data: 20180121
+ *   Course: CS 414
+ *   Assignment: A1
+ *   Desc:  JUnit test class to test the Bishop class
+ * 
+ * 
+ */
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -7,8 +17,12 @@ import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 import a1.ChessPiece.Color;
+
 
 class BishopTest {
 
@@ -28,8 +42,8 @@ ChessBoard board;
 	 * Test to see if the Bishop can be created as a white and as a black piece
 	 * Test to see if the getColor function works.
 	 */
-		
-	@Test
+	
+	@Test	
 	void testCreateWhiteBishop() {
 		Bishop testBishop1 = new Bishop(board, Color.WHITE);
 		assertTrue( testBishop1 != null, "White Bishop is null");

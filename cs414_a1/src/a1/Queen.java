@@ -1,5 +1,16 @@
 package a1;
 
+/*   
+ *   File: Queen.java
+ *   Name: Andrew Tracy
+ *   Data: 20180121
+ *   Course: CS 414
+ *   Assignment: A1
+ *   Desc:  Class for the queen chess piece
+ * 
+ * 
+ */
+
 import java.util.ArrayList;
 
 

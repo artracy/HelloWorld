@@ -1,5 +1,16 @@
 package a1;
 
+/*   
+ *   File: QueenTest.java
+ *   Name: Andrew Tracy
+ *   Data: 20180121
+ *   Course: CS 414
+ *   Assignment: A1
+ *   Desc:  JUnit test class to test the Queen class
+ * 
+ * 
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;

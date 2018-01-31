@@ -41,8 +41,7 @@ public abstract class ChessPiece {
 	 */
 	public void setPosition(String position) throws IllegalPositionException{
 		int newRow, newColumn;
-		ArrayList<String> moves;
-		
+				
 		if(position.length() != 2)
 			throw new IllegalPositionException("Invalid string size");
 		
@@ -55,14 +54,9 @@ public abstract class ChessPiece {
 		if( (newColumn < 0) || (7 < newColumn) )
 			throw new IllegalPositionException("Invalid column");
 		
-	/*	moves = this.legalMoves();
+		row = newRow;
+		column = newColumn;
 		
-		if(moves.contains(position)) {
-			row = newRow;
-			column = newColumn;
-		}
-			*/
-
 	}
 	
 	abstract public String toString();

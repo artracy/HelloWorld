@@ -25,20 +25,22 @@ public class King extends ChessPiece {
 	public ArrayList<String> legalMoves() {
 
 		int checkRow, checkColumn; 
-		ArrayList<String> moves = null;
+		ArrayList<String> moves = new ArrayList<String>();
 		String position;
 		ChessPiece otherPiece;
 		
 		for (checkRow = row -1 ; checkRow <= row +1; checkRow++) {
-			for (checkColumn = column -1; checkColumn <= column +1; checkColumn++) {
+			for (checkColumn = column -1; checkColumn <= column +1; checkColumn++) {				
 				
-				if(checkRow == row && checkColumn == column ||
+				if((checkRow == row && checkColumn == column) ||
 						checkRow <  0 || checkRow >= 8 ||
-						checkColumn < 0 || checkColumn >= 8) {
+						checkColumn < 0 || checkColumn >= 8) {					
+					
 					continue;
 				}
 					
 				position = posToString(checkRow, checkColumn);
+				System.out.println(position);
 				try {
 					otherPiece = board.getPiece(position);
 					if (otherPiece == null) {
@@ -48,10 +50,9 @@ public class King extends ChessPiece {
 					
 					if(otherPiece.getColor() != color) {
 						moves.add(position);
-					}			
+					}								
 					
-				} catch (IllegalPositionException e) {
-					
+				} catch (IllegalPositionException e) {					
 					e.printStackTrace();
 				}
 			}

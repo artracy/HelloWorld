@@ -25,7 +25,7 @@ public class Pawn extends ChessPiece {
 	public ArrayList<String> legalMoves() {
 		
 		int checkRow, checkColumn, direction; 
-		ArrayList<String> moves = null;
+		ArrayList<String> moves = new ArrayList<String>();
 		String position;
 		ChessPiece otherPiece;
 		

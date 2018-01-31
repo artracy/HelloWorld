@@ -26,7 +26,7 @@ public class Rook extends ChessPiece {
 	@Override
 	public ArrayList<String> legalMoves() {
 		int checkRow, checkColumn;
-		ArrayList<String> moves = null;
+		ArrayList<String> moves = new ArrayList<String>();
 		String position;
 		ChessPiece otherPiece;
 		
@@ -81,8 +81,9 @@ public class Rook extends ChessPiece {
 		//Test for legal moves moving right
 		
 		for (checkColumn = column + 1; checkColumn < 8; checkColumn ++) {
-			position = posToString(checkRow, column);
+			position = posToString(row, checkColumn);
 			try {
+				
 				otherPiece = board.getPiece(position);
 				if (otherPiece == null) {
 					moves.add(position);
@@ -103,7 +104,7 @@ public class Rook extends ChessPiece {
 		//Test for legal moves moving left
 		
 		for (checkColumn = column - 1; checkColumn >= 0; checkColumn --) {
-			position = posToString(checkRow, column);
+			position = posToString(row, checkColumn);
 			try {
 				otherPiece = board.getPiece(position);
 				if (otherPiece == null) {

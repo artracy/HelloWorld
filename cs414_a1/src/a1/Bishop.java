@@ -24,7 +24,7 @@ public class Bishop extends ChessPiece {
 	@Override
 	public ArrayList<String> legalMoves() {
 		int checkRow, checkColumn; 
-		ArrayList<String> moves = null;
+		ArrayList<String> moves = new ArrayList<String>();
 		String position;
 		ChessPiece otherPiece;
 		
@@ -39,6 +39,8 @@ public class Bishop extends ChessPiece {
 				otherPiece = board.getPiece(position);
 				if (otherPiece == null) {
 					moves.add(position);
+					checkRow++;
+					checkColumn++;
 					continue;
 				}
 				if(otherPiece.getColor() == color) {
@@ -51,8 +53,7 @@ public class Bishop extends ChessPiece {
 				
 				e.printStackTrace();
 			}
-			checkRow++;
-			checkColumn++;
+			
 		}
 		
 		//Test for legal moves to the upper Left diagonal
@@ -66,6 +67,8 @@ public class Bishop extends ChessPiece {
 				otherPiece = board.getPiece(position);
 				if (otherPiece == null) {
 					moves.add(position);
+					checkRow++;
+					checkColumn--;
 					continue;
 				}
 				if(otherPiece.getColor() == color) {
@@ -78,8 +81,7 @@ public class Bishop extends ChessPiece {
 				
 				e.printStackTrace();
 			}
-			checkRow++;
-			checkColumn--;
+			
 		}
 		
 		//Test for legal moves to the lower Right diagonal
@@ -93,6 +95,8 @@ public class Bishop extends ChessPiece {
 				otherPiece = board.getPiece(position);
 				if (otherPiece == null) {
 					moves.add(position);
+					checkRow--;
+					checkColumn++;
 					continue;
 				}
 				if(otherPiece.getColor() == color) {
@@ -105,8 +109,7 @@ public class Bishop extends ChessPiece {
 				
 				e.printStackTrace();
 			}
-			checkRow--;
-			checkColumn++;
+			
 		}
 	
 		
@@ -121,6 +124,8 @@ public class Bishop extends ChessPiece {
 				otherPiece = board.getPiece(position);
 				if (otherPiece == null) {
 					moves.add(position);
+					checkRow--;
+					checkColumn--;
 					continue;
 				}
 				if(otherPiece.getColor() == color) {
@@ -132,8 +137,7 @@ public class Bishop extends ChessPiece {
 			} catch (IllegalPositionException e) {
 				e.printStackTrace();
 			}
-			checkRow--;
-			checkColumn--;
+			
 		}
 					
 		// TODO Auto-generated method stub

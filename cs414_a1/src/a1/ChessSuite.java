@@ -11,7 +11,7 @@ package a1;
  *          There is a bug with JUnit5 right now that this does not work.
  *          To run all test cases in Eclipse 4.7.2, click run -> Run Configurations...  
  *          In the Run Configurations window,  select JUnit -> ChessSuite.  
- *          Set Test Runner to JUnit 5.  Click "Run all tests in the selected project, package or source forlder".  
+ *          Set Test Runner to JUnit 5.  Click "Run all tests in the selected project, package or source folder".  
  *          Under that, there is a Search button.  Click said search button and look for the a1 package.  
  *          Select the a1 package and click OK.  Now back in the Run Configuration window, click Run.
  * 
